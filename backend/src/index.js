@@ -18,7 +18,7 @@ app.use(cors());
 //testing postgress connection
 app.get("/", async (req, res) => {
   const result = await pool.query("select current_database()");
-  res.send(`the database name is : ${result.rows[0].current_database}`);
+  res.send(`the database name is : ${result.rows[0].current_database} from docker `);
 });
 
 //server running
