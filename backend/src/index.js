@@ -37,10 +37,17 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
+const { initializeTables } = require("./models/createTables.js");
+
 // Server running
 app.listen(port, async () => {
   console.log("Server running on port " + port);
   await connectRedis();
+  try {
+    await initializeTables();
+  } catch (error) {
+    console.error("Failed to initialize database tables:", error);
+  }
 });
 
 module.exports = app;
