@@ -1,16 +1,17 @@
-import { configDotenv } from "dotenv";
 import pkg from "pg";
+import { config } from "./env.js";
 
 const { Pool } = pkg;
-configDotenv();
+
 
 const pool = new Pool({
-  user: process.env.DB_USER_NAME,
-  host: process.env.DB_HOST,
-  database: process.env.DATABASE_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
+  user: config.db.DB_USER_NAME,
+  host: config.db.DB_HOST,
+  database: config.db.DATABASE_NAME,
+  password: config.db.DB_PASS,
+  port: config.db.DB_PORT,
 });
+
 
 pool.on("connect", () => {
   console.log("connection pool established with the database");
