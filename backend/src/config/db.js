@@ -1,5 +1,5 @@
-import pkg from "pg";
-import { config } from "./env.js";
+const  pkg =require("pg");
+const { config } =require("./env.js");
 
 const { Pool } = pkg;
 

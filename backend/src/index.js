@@ -1,8 +1,10 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import pool from "./config/db.js";
-import { connectRedis, disconnectRedis, redisClient } from "./config/redis.js";
+const express =require( "express");
+const  cors =require( "cors");
+const dotenv =require( "dotenv");
+const  pool =require( "./config/db.js");
+const { connectRedis, disconnectRedis, redisClient } =require( "./config/redis.js");
+const { errorHandler, notFoundHandler } = require("./middleware/errorHandler.js");
+const { success } = require("./utils/response.js");
 
 dotenv.config();
 
@@ -10,17 +12,24 @@ const app = express();
 const port = process.env.PORT || 4001;
 //middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+
+}));
 
 //routes
 
-//errorhandling middleware
 
 //testing postgress connection
 app.get("/", async (req, res) => {
   const result = await pool.query("select current_database()");
-  res.send(`the database name is : ${result.rows[0].current_database} from docker `);
+  return success(`the database name is : ${result.rows[0].current_database} from postgres `);
 });
+
+
+//errorhandling middleware
+app.use(errorHandler);
+app.use(notFoundHandler);
+
 
 
 process.on('SIGINT',async ()=>{

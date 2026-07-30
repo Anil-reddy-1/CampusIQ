@@ -1,4 +1,4 @@
-import { configDotenv } from "dotenv";
+const { configDotenv } =require( "dotenv");
 
 configDotenv();
 

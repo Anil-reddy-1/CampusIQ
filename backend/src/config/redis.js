@@ -1,5 +1,5 @@
-import {createClient} from 'redis'
-import { config } from './env.js'
+const  {createClient} =require('redis');
+const  { config }= require('./env.js');
 
 
 export const redisClient = createClient({
