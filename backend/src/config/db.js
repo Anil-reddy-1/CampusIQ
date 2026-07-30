@@ -1,5 +1,5 @@
 const  pkg =require("pg");
-const { config } =require("./env.js");
+const  config  =require("./env.js");
 
 const { Pool } = pkg;
 
@@ -17,4 +17,4 @@ pool.on("connect", () => {
   console.log("connection pool established with the database");
 });
 
-export default pool;
+module.exports= pool;

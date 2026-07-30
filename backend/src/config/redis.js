@@ -1,8 +1,8 @@
 const  {createClient} =require('redis');
-const  { config }= require('./env.js');
+const   config = require('./env.js');
 
 
-export const redisClient = createClient({
+ const redisClient = createClient({
     url:config.redis.REDIS_URI
 }) 
 redisClient.on('connect',()=>{
@@ -17,14 +17,14 @@ redisClient.on('disconnected',()=>{
     console.log("redis disconnected");
 })
 
-export const connectRedis=async ()=>{
+ const connectRedis=async ()=>{
     if(!redisClient.isOpen){
         await redisClient.connect();
     }
     console.log("redis connected ping ",await redisClient.ping());
 }
 
-export const disconnectRedis =async ()=>{
+ const disconnectRedis =async ()=>{
     if(redisClient.isOpen){
        await  redisClient.quit();
     }
@@ -32,4 +32,8 @@ export const disconnectRedis =async ()=>{
 }
 
 
-
+module.exports={
+    redisClient,
+    connectRedis,
+    disconnectRedis
+}
