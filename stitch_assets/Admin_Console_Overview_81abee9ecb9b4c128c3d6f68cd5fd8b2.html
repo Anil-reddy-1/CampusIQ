@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusIQ Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-tint": "#1353d8",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-high": "#e2e8f8",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-primary-fixed-variant": "#003dab",
+                        "secondary-container": "#82f5c1",
+                        "on-primary-container": "#d4dcff",
+                        "surface-variant": "#dce2f3",
+                        "tertiary": "#723b00",
+                        "on-secondary-fixed": "#002114",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface": "#f9f9ff",
+                        "on-primary-fixed": "#00174d",
+                        "surface-dim": "#d3daea",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "tertiary-container": "#954f00",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffd5b6",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-surface": "#151c27",
+                        "surface-container": "#e7eefe",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006c4a",
+                        "on-secondary-container": "#00714e",
+                        "primary": "#003fb1",
+                        "inverse-primary": "#b5c4ff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-error-container": "#93000a",
+                        "outline": "#737686",
+                        "primary-container": "#1a56db",
+                        "surface-container-highest": "#dce2f3",
+                        "on-background": "#151c27",
+                        "outline-variant": "#c3c5d7",
+                        "secondary-fixed": "#85f8c4",
+                        "surface-bright": "#f9f9ff",
+                        "background": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F9FAFB; }
+        .dashboard-card {
+            background-color: #ffffff;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md bg-background flex flex-col md:flex-row min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen sticky top-0 bg-surface w-64 border-r border-outline-variant z-50">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CampusIQ</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Dashboard</p>
+</div>
+<div class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-primary-container/10 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Extraction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span class="font-label-md text-label-md">System Health</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="p-4 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a system administrator in a well-lit modern office environment. Clear, sharp focus on the face with a shallow depth of field blurring the background slightly. Professional attire. Soft, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxETk9BX_Q2K1hbw9DSanEk9w9keP_d35ZhDUfILR4XhBB9TkFbmctSsf5tQJvGrArEua_cxLUFBnAmTOWOwU8znEAQ1P2qRGxy_Kz17EteIPBloJ2CzuAGq1wezsQjYYp7D8NqusUH3qZXkZuOoIeyi0K_QkTzwnli9AvA4_mC6trlPlSNus8AY8TlNgVCI_1PIRHvX8TMlnIBTaweFY_Yn4CF0QDyi5ZJzfH5s3zAyqFPdWQQAGc"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Admin User</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">System Operator</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile) / Header (Desktop) -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm md:shadow-none">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-lg text-headline-lg text-on-surface hidden md:block">Overview</h2>
+<h1 class="font-headline-md text-headline-md font-bold text-primary md:hidden">CampusIQ Admin</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<div class="flex-1 p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full space-y-gutter overflow-y-auto">
+<!-- Metrics Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="dashboard-card p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Students</span>
+<span class="material-symbols-outlined text-primary">group</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-xl text-headline-xl text-on-surface">12,450</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-sm mr-1">arrow_upward</span>5%</span>
+</div>
+</div>
+<div class="dashboard-card p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Avg. Extraction Accuracy</span>
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-xl text-headline-xl text-on-surface">88%</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center"><span class="material-symbols-outlined text-sm mr-1">arrow_upward</span>2%</span>
+</div>
+</div>
+<div class="dashboard-card p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">System Uptime</span>
+<span class="material-symbols-outlined text-primary">cloud_done</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-xl text-headline-xl text-on-surface">99.9%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last 30 Days</span>
+</div>
+</div>
+<div class="dashboard-card p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Extraction Jobs</span>
+<span class="material-symbols-outlined text-primary">pending_actions</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-xl text-headline-xl text-on-surface">342</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Processing</span>
+</div>
+</div>
+</div>
+<!-- Complex Layout Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Chart Area -->
+<div class="lg:col-span-8 dashboard-card p-6 flex flex-col h-[400px]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Extraction Quality Trends</h3>
+<select class="form-select bg-surface border border-outline-variant text-body-sm font-body-sm rounded-md focus:ring-primary focus:border-primary">
+<option>Last 30 Days</option>
+<option>Last 7 Days</option>
+</select>
+</div>
+<div class="flex-1 w-full bg-surface-container-low rounded-lg relative overflow-hidden flex items-end justify-between p-4">
+<!-- Placeholder for Chart -->
+<div class="absolute inset-0 flex items-center justify-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-50">Line Graph Visualization Area</p>
+</div>
+<!-- Mock Chart Lines -->
+<div class="w-full h-full flex items-end justify-between gap-2 z-10 px-4">
+<div class="w-1/12 bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary/40 h-[70%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary/60 h-[80%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary/80 h-[85%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary h-[88%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary/90 h-[90%] rounded-t-sm"></div>
+<div class="w-1/12 bg-primary h-[89%] rounded-t-sm"></div>
+</div>
+</div>
+<div class="flex justify-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Timetables</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Marks/Transcripts</span>
+</div>
+</div>
+</div>
+<!-- System Health Panel -->
+<div class="lg:col-span-4 dashboard-card p-6 flex flex-col gap-6 h-[400px] overflow-y-auto">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">System Health</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md text-on-surface">Queue Depth</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Normal</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md text-on-surface">GCal Sync Success</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">94%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-3">Server Latency</h4>
+<div class="flex items-center justify-between mb-2">
+<span class="font-body-sm text-body-sm text-on-surface">API Gateway</span>
+<span class="font-code-md text-code-md text-secondary">42ms</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-body-sm text-body-sm text-on-surface">Extraction Engine</span>
+<span class="font-code-md text-code-md text-error">850ms</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Database</span>
+<span class="font-code-md text-code-md text-secondary">12ms</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- User Management Table -->
+<div class="dashboard-card overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">User Management</h3>
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-md font-body-sm text-body-sm focus:ring-primary focus:border-primary" placeholder="Search students..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Name</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Email</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="p-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-body-sm text-body-sm text-on-surface font-medium">Eleanor Vance</td>
+<td class="p-4 font-body-sm text-body-sm text-on-surface-variant">e.vance@university.edu</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#ecfdf5] text-[#065f46]">Active</span>
+</td>
+<td class="p-4 text-right space-x-2">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm">Metrics</button>
+<button class="text-error hover:text-error-container font-label-sm text-label-sm">Suspend</button>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-body-sm text-body-sm text-on-surface font-medium">Luke Crain</td>
+<td class="p-4 font-body-sm text-body-sm text-on-surface-variant">l.crain@university.edu</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#fef2f2] text-[#991b1b]">Suspended</span>
+</td>
+<td class="p-4 text-right space-x-2">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm">Metrics</button>
+<button class="text-secondary hover:text-secondary-container font-label-sm text-label-sm">Reinstate</button>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-body-sm text-body-sm text-on-surface font-medium">Theodora Dudley</td>
+<td class="p-4 font-body-sm text-body-sm text-on-surface-variant">t.dudley@university.edu</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#ecfdf5] text-[#065f46]">Active</span>
+</td>
+<td class="p-4 text-right space-x-2">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm">Metrics</button>
+<button class="text-error hover:text-error-container font-label-sm text-label-sm">Suspend</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

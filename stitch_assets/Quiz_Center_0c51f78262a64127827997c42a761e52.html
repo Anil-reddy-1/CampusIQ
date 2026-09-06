@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusIQ - Quiz Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#151c27",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "surface-variant": "#dce2f3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#954f00",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#85f8c4",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e2e8f8",
+                    "outline": "#737686",
+                    "outline-variant": "#c3c5d7",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-secondary-fixed": "#002114",
+                    "on-surface-variant": "#434654",
+                    "on-secondary-container": "#00714e",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "primary-container": "#1a56db",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#d4dcff",
+                    "surface-dim": "#d3daea",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-tertiary-container": "#ffd5b6",
+                    "surface-container": "#e7eefe",
+                    "surface-container-low": "#f0f3ff",
+                    "tertiary": "#723b00",
+                    "inverse-primary": "#b5c4ff",
+                    "on-primary-fixed-variant": "#003dab",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-surface": "#151c27",
+                    "secondary-container": "#82f5c1",
+                    "on-secondary-fixed-variant": "#005137",
+                    "inverse-surface": "#2a313d",
+                    "secondary-fixed-dim": "#68dba9",
+                    "background": "#f9f9ff",
+                    "on-primary-fixed": "#00174d",
+                    "primary": "#003fb1",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary": "#006c4a",
+                    "surface-tint": "#1353d8",
+                    "surface": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#b5c4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "code-md": ["jetbrainsMono"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md h-full flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface py-6 px-4 gap-2 border-r border-outline-variant/30">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md font-bold">C</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">CampusIQ</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Academic Copilot</p>
+</div>
+</div>
+<div class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                Extraction
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                Chat
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+                Documents
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                Planner
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim font-bold bg-primary-container/10 dark:bg-primary-container/20 transition-transform duration-150 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">quiz</span>
+                Quizzes
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">style</span>
+                Flashcards
+            </a>
+</div>
+<div class="mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant font-medium hover:bg-surface-variant dark:hover:bg-surface-container-highest transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col h-screen overflow-y-auto bg-surface-container-lowest">
+<!-- TopNavBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center h-16 px-margin-mobile bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant/30">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">CampusIQ</h1>
+<button class="text-on-surface-variant p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- TopNavBar (Desktop - Content Area Header) -->
+<header class="hidden md:flex justify-between items-center h-16 px-margin-desktop bg-surface/80 backdrop-blur-md sticky top-0 z-40 border-b border-outline-variant/30">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-background">Quiz Center</h2>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular profile picture of a university student looking professional and ready to study. Clean lighting, soft background, modern academic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJxKFv2X4IStn02oleNT-97xiyz2Is5Eqr1WZHk945nLsbdNkXEplU4iLQidE356eZBCGKffB42Xs9mVk0jHLptfHUbLSK3OHrqu5vmsYjQGX3H-IcNxBXZuGlM1gXXydJB-2JFKhbAbnc4unE_r1MVkgAj64xqW_AESyYaRtvp0IJGzWgUiHV84W2smNkhTp9TsO8dLZ35ErWV2pUmELCKVEdJNgz2_6p_jQC-tf8darcDoNgt5Uo"/>
+</div>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop flex-1 max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Generate & Active -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Generate New Quiz Bento Box -->
+<section class="bg-surface rounded-xl border border-outline-variant/50 shadow-sm p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-2">Generate New Quiz</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 max-w-md">Transform your study materials into interactive quizzes to test your comprehension and retention.</p>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Source Document</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">description</span>
+<select class="w-full pl-10 pr-4 py-2 bg-surface-bright border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-background focus:ring-2 focus:ring-primary focus:border-primary appearance-none">
+<option>Data Structures - Chapter 4</option>
+<option>Neurobiology 101 Notes</option>
+<option>Modern European History Syllabus</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Difficulty Level</label>
+<div class="flex gap-2">
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="difficulty" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">Easy</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="difficulty" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">Medium</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="difficulty" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all">Hard</div>
+</label>
+</div>
+</div>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="bg-primary hover:bg-primary/90 text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                                        Generate Quiz
+                                    </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Active Quizzes -->
+<section>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4">Active Quizzes</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface border border-outline-variant/50 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-l-xl"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">In Progress</div>
+<span class="text-outline-variant text-sm">3 days left</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-background font-semibold mb-1 group-hover:text-primary transition-colors">Data Structures - Chapter 4 Quiz</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-1">Generated from syllabus and lecture notes.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-sm">
+<span class="material-symbols-outlined text-[16px]">list_alt</span>
+<span>15 Questions</span>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Resume</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-outline-variant/50 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Not Started</div>
+</div>
+<h4 class="font-label-md text-label-md text-on-background font-semibold mb-1 group-hover:text-primary transition-colors">Neurobiology Basics</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-1">Focus on neural pathways and synapses.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-sm">
+<span class="material-symbols-outlined text-[16px]">list_alt</span>
+<span>20 Questions</span>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Start</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Performance Stats -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Recent Scores -->
+<section class="bg-surface rounded-xl border border-outline-variant/50 shadow-sm p-6">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4">Recent Scores</h3>
+<div class="flex flex-col gap-4">
+<!-- Score item -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-secondary font-label-md border-2 border-secondary/20">
+                                    92%
+                                </div>
+<div class="flex-1">
+<h4 class="font-label-sm text-label-sm text-on-background">History: Cold War Era</h4>
+<p class="text-[11px] text-on-surface-variant">Completed yesterday</p>
+</div>
+</div>
+<!-- Score item -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-tertiary font-label-md border-2 border-tertiary/20">
+                                    78%
+                                </div>
+<div class="flex-1">
+<h4 class="font-label-sm text-label-sm text-on-background">Physics: Kinematics</h4>
+<p class="text-[11px] text-on-surface-variant">Completed 3 days ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Subject Performance -->
+<section class="bg-surface rounded-xl border border-outline-variant/50 shadow-sm p-6 flex-1">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4">Subject Performance</h3>
+<div class="space-y-5">
+<!-- Bar 1 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-background">Computer Science</span>
+<span class="text-secondary font-bold">88%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-background">Biology</span>
+<span class="text-tertiary font-bold">72%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-tertiary h-2 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<!-- Bar 3 -->
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-background">History</span>
+<span class="text-primary font-bold">95%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>

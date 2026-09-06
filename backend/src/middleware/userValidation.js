@@ -18,7 +18,9 @@ const createUserSchema = Joi.object({
     'any.required': 'Name is required',
   }),
   phone: Joi.string().trim().allow(null, '').optional(),
-  role: Joi.string().valid('student', 'faculty', 'admin').default('student'),
+  role: Joi.string().valid('student').default('student').messages({
+    'any.only': 'Only student accounts can be created via API. Admin accounts must be seeded via script.',
+  }),
   department: Joi.string().trim().max(100).allow(null, '').optional(),
   avatarUrl: Joi.string().uri().allow(null, '').optional(),
 });
@@ -26,7 +28,7 @@ const createUserSchema = Joi.object({
 const updateUserSchema = Joi.object({
   name: Joi.string().trim().min(2).max(100).optional(),
   phone: Joi.string().trim().allow(null, '').optional(),
-  role: Joi.string().valid('student', 'faculty', 'admin').optional(),
+  role: Joi.string().valid('student', 'admin').optional(),
   department: Joi.string().trim().max(100).allow(null, '').optional(),
   avatarUrl: Joi.string().uri().allow(null, '').optional(),
   isActive: Joi.boolean().optional(),
@@ -35,7 +37,7 @@ const updateUserSchema = Joi.object({
 const queryUserSchema = Joi.object({
   page: Joi.number().integer().min(1).default(1),
   limit: Joi.number().integer().min(1).max(100).default(10),
-  role: Joi.string().valid('student', 'faculty', 'admin').optional(),
+  role: Joi.string().valid('student', 'admin').optional(),
   search: Joi.string().trim().allow('').optional(),
   isActive: Joi.boolean().optional(),
 });

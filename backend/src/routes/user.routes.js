@@ -16,8 +16,8 @@ router.get('/me', authenticate, userController.getMe);
 // Idempotent sync of authenticated Firebase user into Postgres database
 router.post('/sync', authenticate, userController.syncUser);
 
-// Get paginated list of users (Admin and Faculty access)
-router.get('/', authenticate, requireRole('admin', 'faculty'), validateQueryUser, userController.getAllUsers);
+// Get paginated list of users (Admin access only)
+router.get('/', authenticate, requireRole('admin'), validateQueryUser, userController.getAllUsers);
 
 // Get user by ID (Self or Admin access)
 router.get('/:id', authenticate, requireSelfOrAdmin('id'), userController.getUser);

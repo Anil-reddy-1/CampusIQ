@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - CampusIQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#151c27",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-variant": "#dce2f3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#954f00",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#85f8c4",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e2e8f8",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c5d7",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-secondary-fixed": "#002114",
+                        "on-surface-variant": "#434654",
+                        "on-secondary-container": "#00714e",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "primary-container": "#1a56db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#d4dcff",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-tertiary-container": "#ffd5b6",
+                        "surface-container": "#e7eefe",
+                        "surface-container-low": "#f0f3ff",
+                        "tertiary": "#723b00",
+                        "inverse-primary": "#b5c4ff",
+                        "on-primary-fixed-variant": "#003dab",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-surface": "#151c27",
+                        "secondary-container": "#82f5c1",
+                        "on-secondary-fixed-variant": "#005137",
+                        "inverse-surface": "#2a313d",
+                        "secondary-fixed-dim": "#68dba9",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed": "#00174d",
+                        "primary": "#003fb1",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary": "#006c4a",
+                        "surface-tint": "#1353d8",
+                        "surface": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b5c4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "code-md": ["jetbrainsMono"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f9f9ff; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low flex flex-col h-full py-6 px-4 gap-2 z-40 border-r border-outline-variant/30 hidden md:flex">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center font-headline-md font-bold">C</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CampusIQ</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Copilot</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="dashboard">dashboard</span>
+<span class="font-body-sm text-body-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-body-sm text-body-sm">Extraction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-body-sm text-body-sm">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="description">description</span>
+<span class="font-body-sm text-body-sm">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-sm text-body-sm">Planner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="quiz">quiz</span>
+<span class="font-body-sm text-body-sm">Quizzes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="style">style</span>
+<span class="font-body-sm text-body-sm">Flashcards</span>
+</a>
+<div class="mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-primary-container/10 transition-transform duration-150 active:scale-95 group" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full h-full overflow-y-auto">
+<!-- TopNavBar -->
+<header class="sticky top-0 bg-surface/80 backdrop-blur-md z-30 px-margin-mobile md:px-margin-desktop h-16 flex items-center justify-between border-b border-outline-variant/30">
+<div class="md:hidden">
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">CampusIQ</h2>
+</div>
+<div class="hidden md:block">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Settings</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a college student smiling slightly, well-lit studio lighting, soft blurred background with hints of a library, modern academic setting, light mode aesthetic with crisp whites and soft blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLFMTpUTltQTCFeGHSLhWCRsJB59HcHOQp--IB1NQj8RIRT4hV09f7fVfFOw8vdIcp1OPghITsF1D6tCUMt6ck5Fii2giVASegRcYJjwSHddu7wl7nk-vQLfMdiIiIyIYOn7UBs8s-8XAjfgFCeWU6iPdW1kkjTv-YgAqSjibmauD2nsy1CZjGPrNZZ4YWnXSdlkZ7tgWq_PbV4xKaiqPPonisvPxPvV0W8cJt7Ix4dfkGnhWFCM_Z"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full">
+<div class="md:hidden mb-6">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Settings</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Manage your account preferences and integrations.</p>
+</div>
+<div class="hidden md:block mb-8">
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your account preferences and integrations.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Settings Navigation (Desktop mostly, or standard stack on mobile) -->
+<div class="lg:col-span-3 space-y-2 hidden lg:block">
+<button class="w-full text-left px-4 py-3 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="person">person</span> Profile
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant font-label-md text-label-md flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span> Integrations
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant font-label-md text-label-md flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span> Notifications
+                    </button>
+<button class="w-full text-left px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant font-label-md text-label-md flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined" data-icon="security">security</span> Security
+                    </button>
+</div>
+<!-- Settings Content Area -->
+<div class="lg:col-span-9 space-y-8 pb-12">
+<!-- Profile Section -->
+<section class="glass-panel rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg" data-icon="person">person</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Profile Information</h3>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex flex-col items-center gap-4">
+<div class="w-24 h-24 rounded-full overflow-hidden border-4 border-surface relative group cursor-pointer">
+<img alt="Profile Picture" class="w-full h-full object-cover" data-alt="A professional headshot of a college student smiling slightly, well-lit studio lighting, soft blurred background with hints of a library, modern academic setting, light mode aesthetic with crisp whites and soft blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABsdL_PngJCrLIHLQgFDfLKoPGie_gREOpenUXwAESwaL6sUKgs_BVFuapyoCUOEEemXPjDhuiK9mgZXZQD7tXr0ckcW0IxKsUyGjzpjwI2dwMfbYDEPaG_J7_XdkRvcd_FDuC-wfi7ZjRtM0F4jarXbreamyKO8p7IhPK_zG623qZOxXoUzWkqpsZ0vRMgFVYvIkWHNMNmzLJL8BfLGPu3aBKmKSSsNf81-JUmP-efqBwDyiLwUZd"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Change Photo</button>
+</div>
+<div class="flex-1 w-full space-y-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">First Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" type="text" value="Alex"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Last Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" type="text" value="Chen"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Email Address</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" type="email" value="alex.chen@university.edu"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">University</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" type="text" value="State University"/>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg shadow-sm hover:bg-surface-tint transition-colors">
+                                        Save Changes
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Integrations Section -->
+<section class="glass-panel rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined text-secondary bg-secondary-container/30 p-2 rounded-lg" data-icon="calendar_month">calendar_month</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Connected Accounts</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-outline-variant/50 hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-outline-variant/20">
+<svg class="w-6 h-6" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="#fff"></path><path d="M11.983 23.998c6.626 0 11.996-5.372 11.996-12 0-6.626-5.37-11.998-11.996-11.998C5.358 0 0 5.372 0 12c0 6.628 5.358 12 6.625 11.998z" fill="#4285f4"></path><path d="M20.25 10.74h-8.25v2.98h4.74c-.21 1.25-.97 2.31-2.07 3.01v2.5h3.35c1.96-1.8 3.1-4.45 3.1-7.46 0-.52-.05-1.02-.12-1.5z" fill="#4285f4"></path><path d="M12 20.47c2.31 0 4.25-.76 5.66-2.06l-3.35-2.5c-.76.51-1.73.81-2.81.81-2.16 0-3.99-1.46-4.64-3.42H3.4v2.58c1.41 2.8 4.28 4.7 7.6 4.7z" fill="#34a853"></path><path d="M7.36 13.3c-.17-.5-.26-1.03-.26-1.57s.09-1.07.26-1.57V7.58H3.4c-.68 1.34-1.06 2.87-1.06 4.49s.38 3.15 1.06 4.49l3.96-3.26z" fill="#fbbc05"></path><path d="M12 4.75c1.26 0 2.39.43 3.28 1.27l2.45-2.45C16.25 2.11 14.31 1.25 12 1.25 8.68 1.25 5.81 3.15 4.4 5.96l3.96 3.26c.65-1.95 2.48-3.4 4.64-3.4z" fill="#ea4335"></path></svg>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Google Calendar</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sync assignments and study sessions.</p>
+</div>
+</div>
+<button class="bg-surface border border-outline text-on-surface font-label-sm text-label-sm px-4 py-2 rounded-lg hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Connected
+                                </button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-outline-variant/50 hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-[#3F0F3F] text-white rounded-full flex items-center justify-center shadow-sm">
+<span class="font-bold text-lg">C</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Canvas LMS</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Import course materials directly.</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-lg shadow-sm hover:bg-surface-tint transition-colors">
+                                    Connect
+                                </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

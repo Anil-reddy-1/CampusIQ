@@ -1,0 +1,445 @@
+/* ===== Admin Dashboard Styles ===== */
+
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+
+.admin-dashboard-title {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--on-surface);
+  margin: 0;
+}
+
+/* --- Stats Row --- */
+.admin-stats-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .admin-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .admin-stats-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.admin-stat-card {
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--outline);
+}
+
+.admin-stat-trend {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.admin-stat-trend .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.admin-stat-trend.positive {
+  color: var(--secondary);
+}
+
+.admin-stat-trend.neutral {
+  color: var(--outline);
+}
+
+.admin-stat-value {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  color: var(--on-surface);
+  margin: 0;
+}
+
+.admin-stat-subtitle {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+}
+
+/* --- Two Column Grid --- */
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter);
+}
+
+@media (min-width: 1024px) {
+  .admin-grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+/* --- Chart Section --- */
+.admin-chart-card {
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+}
+
+.admin-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-chart-header h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin: 0;
+}
+
+.admin-chart-filter {
+  padding: 6px 12px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--font);
+  color: var(--on-surface);
+  background: var(--surface-container-lowest);
+  cursor: pointer;
+}
+
+.admin-chart-placeholder {
+  height: 200px;
+  background: var(--surface-container-low);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 160px;
+  padding: 0 8px;
+}
+
+.chart-bar-group {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  min-width: 16px;
+  transition: height 300ms ease;
+}
+
+.chart-bar.primary {
+  background: var(--primary-container);
+}
+
+.chart-bar.secondary {
+  background: var(--primary-fixed-dim);
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--on-surface-variant);
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.chart-legend-dot.primary {
+  background: var(--primary-container);
+}
+
+.chart-legend-dot.secondary {
+  background: var(--primary-fixed-dim);
+}
+
+/* --- System Health Card --- */
+.system-health-card {
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+}
+
+.system-health-card h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin: 0 0 20px;
+}
+
+.health-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--surface-variant);
+}
+
+.health-metric:last-child {
+  border-bottom: none;
+}
+
+.health-metric-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--outline);
+}
+
+.health-metric-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.health-metric-value.normal {
+  color: var(--secondary);
+}
+
+.health-progress-bar {
+  flex: 1;
+  max-width: 120px;
+  height: 8px;
+  background: var(--surface-variant);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0 12px;
+}
+
+.health-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--secondary);
+}
+
+.health-metric-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.server-latency-section {
+  margin-top: 8px;
+}
+
+.server-latency-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--outline);
+  margin-bottom: 8px;
+}
+
+.latency-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.latency-name {
+  font-size: 14px;
+  color: var(--on-surface-variant);
+}
+
+.latency-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+/* --- User Management Table --- */
+.admin-users-card {
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+}
+
+.admin-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-users-header h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin: 0;
+}
+
+.admin-search-input {
+  padding: 8px 16px 8px 40px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--font);
+  color: var(--on-surface);
+  background: var(--surface-container-lowest);
+  outline: none;
+  width: 240px;
+  max-width: 100%;
+  transition: border-color 150ms ease;
+}
+
+.admin-search-input:focus {
+  border-color: var(--primary);
+}
+
+.admin-search-wrapper {
+  position: relative;
+}
+
+.admin-search-wrapper .material-symbols-outlined {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--outline);
+}
+
+.admin-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.admin-users-table thead th {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--outline);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.admin-users-table tbody td {
+  padding: 16px;
+  font-size: 14px;
+  color: var(--on-surface);
+  border-bottom: 1px solid var(--surface-variant);
+  vertical-align: middle;
+}
+
+.admin-users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.user-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.user-status.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.user-status.suspended {
+  background: var(--error-container);
+  color: var(--on-error-container);
+}
+
+.user-action-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 12px;
+  font-family: var(--font);
+}
+
+.user-action-link:hover {
+  text-decoration: underline;
+}
+
+.user-action-link.danger {
+  color: var(--error);
+}
+
+/* Mobile table responsiveness */
+@media (max-width: 767px) {
+  .admin-users-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-users-table {
+    min-width: 600px;
+  }
+}

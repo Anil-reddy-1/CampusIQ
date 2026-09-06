@@ -87,14 +87,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/faculty/*"
-            element={
-              <ProtectedRoute allowedRoles={["admin", "faculty"]}>
-                <RoleBasedHome />
-              </ProtectedRoute>
-            }
-          />
 
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

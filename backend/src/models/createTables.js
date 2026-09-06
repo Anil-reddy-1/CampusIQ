@@ -21,7 +21,7 @@ async function initializeTables() {
         email VARCHAR(255) UNIQUE NOT NULL,
         name VARCHAR(255) NOT NULL,
         phone VARCHAR(30),
-        role VARCHAR(50) NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'faculty', 'admin')),
+        role VARCHAR(50) NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin')),
         department VARCHAR(100),
         avatar_url TEXT,
         is_active BOOLEAN NOT NULL DEFAULT TRUE,

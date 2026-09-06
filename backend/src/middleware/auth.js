@@ -208,7 +208,7 @@ function requireEmailVerified(req, res, next) {
  * Role-Based Access Control (RBAC) Guard:
  * Restricts access to users with authorized role(s).
  * 
- * @param {...string|string[]} allowedRoles - Allowed role names (e.g. 'admin', 'faculty', 'student')
+ * @param {...string|string[]} allowedRoles - Allowed role names (e.g. 'admin', 'student')
  * @returns {import('express').RequestHandler} Express middleware
  */
 function requireRole(...allowedRoles) {

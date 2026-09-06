@@ -65,13 +65,14 @@ async function getOrCreateFirebaseUser(reqUser) {
   let user = await userModel.findUserByFirebaseUid(reqUser.uid);
 
   if (!user) {
-    // Upsert profile from Firebase
+    // Auto-create profile from Firebase — always as 'student'.
+    // Admin role can ONLY be assigned via the seed script, never through signup/login.
     user = await userModel.upsertFirebaseUser({
       firebaseUid: reqUser.uid,
       email: reqUser.email || `${reqUser.uid}@campusiq.user`,
       name: reqUser.name || 'CampusIQ User',
       avatarUrl: reqUser.picture || null,
-      role: reqUser.role || 'student',
+      role: 'student',
     });
   }
 
@@ -86,6 +87,11 @@ async function registerUser(userData) {
 
   if (!firebaseUid || !email || !name) {
     throw new BadRequestError('firebaseUid, email, and name are required fields.');
+  }
+
+  // Admin role cannot be assigned via API — must use seed script
+  if (role === 'admin') {
+    throw new ForbiddenError('Admin accounts can only be created via the seed script, not through the API.');
   }
 
   // Check existing email
@@ -105,7 +111,7 @@ async function registerUser(userData) {
     email,
     name,
     phone,
-    role: role || 'student',
+    role: 'student',
     department,
     avatarUrl,
   });
@@ -136,7 +142,7 @@ async function updateUserProfile(id, updateData, currentUser) {
 
   // Validate role if admin is attempting role update
   if (sanitizedUpdates.role) {
-    const validRoles = ['student', 'faculty', 'admin'];
+    const validRoles = ['student', 'admin'];
     if (!validRoles.includes(sanitizedUpdates.role.toLowerCase())) {
       throw new BadRequestError(`Invalid role. Allowed roles: ${validRoles.join(', ')}`);
     }

@@ -1,0 +1,346 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CampusIQ - Extraction &amp; Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#82f5c1",
+                        "outline-variant": "#c3c5d7",
+                        "outline": "#737686",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-container-highest": "#dce2f3",
+                        "primary-container": "#1a56db",
+                        "on-background": "#151c27",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174d",
+                        "surface-variant": "#dce2f3",
+                        "tertiary": "#723b00",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-tint": "#1353d8",
+                        "on-secondary-container": "#00714e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2a313d",
+                        "primary": "#003fb1",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-container": "#ffd5b6",
+                        "on-surface": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-fixed-variant": "#003dab",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#85f8c4",
+                        "on-secondary-fixed": "#002114",
+                        "secondary": "#006c4a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container": "#e7eefe",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary-container": "#954f00",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "on-primary-container": "#d4dcff",
+                        "on-surface-variant": "#434654",
+                        "inverse-primary": "#b5c4ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["jetbrainsMono"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F9FAFB; } /* Soft base off-white */
+        .workspace-bg { background-color: #f0f3ff; } /* surface-container-low */
+        
+        /* Custom scrollbar for panels */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dce2f3; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c3c5d7; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen sticky top-0 bg-surface border-r border-outline-variant docked full-height left-0 w-64 z-50 shadow-none">
+<div class="p-gutter flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-headline-md" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">CampusIQ</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Academic Copilot</p>
+</div>
+</div>
+<div class="px-gutter pb-6">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+                Upload Document
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto px-4 pb-6 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-primary-container/10 transition-colors opacity-100 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_fix</span>
+<span class="font-label-md text-label-md">Extraction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Planner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-md text-label-md">Quizzes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="font-label-md text-label-md">Flashcards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<div class="p-4 mt-auto border-t border-outline-variant/30">
+<div class="flex items-center gap-3 px-2 py-2">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small circular profile picture of a university student looking professional, bright light, minimalist clean background, soft modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh7NhjGghj9om03STIViqFhZi4jFfXymPjLJ4jJpqoIjQC_I_A1uyIeIxzx0P4fkuOxZ244JR5luql1wOspm_IgfkkPjwlU9JndroEi-ie0FobOIr73_bUsG2fDMEv7TMbL6dgoEImrUY7B4ElR3pqse_0tC9AVUOqc_LD0zcWusKuoFjHlgMZ2YII8Z9UIJkz5VGLQ_Id0IlaHq3ZHIC9OCj47OhSz5tFum9q1lL7957gJRsmE-wt">
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">Student User Profile</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Computer Science</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden workspace-bg">
+<!-- TopAppBar (Mobile only for Nav, but acting as Workspace Header here) -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Step 2: Review &amp; Confirm</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-background">Extracting: IMG_8291.jpg</h2>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 mr-4 bg-surface-container-high rounded-full px-4 py-1.5 border border-outline-variant/30">
+<div class="relative w-6 h-6">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-width="3"></path>
+</svg>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">3/4 Fields</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Workspace Area -->
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden p-margin-mobile md:p-margin-desktop gap-gutter">
+<!-- Left Panel: Source Document (7 columns approx) -->
+<section class="flex-[7] flex flex-col min-h-0 bg-surface rounded-xl border border-outline-variant/50 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant/30 bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">image</span>
+                        Source Image
+                    </h3>
+<div class="flex gap-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-sm">zoom_out</span></button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-sm">center_focus_strong</span></button>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest relative overflow-hidden group cursor-crosshair flex items-center justify-center p-4">
+<!-- High quality placeholder image -->
+<img class="max-w-full max-h-full object-contain rounded shadow-sm transition-transform duration-300 group-hover:scale-[1.02]" data-alt="A high-resolution, sharply focused photograph of a physical college timetable pinned to a cork noticeboard. The paper is slightly worn at the edges, lit by natural soft light from a nearby window, creating subtle shadows. The text on the timetable is legible but clearly a photograph, not a digital render. Modern academic context, minimalist off-white paper against warm cork texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAicsYaX015-1q2340MtzWazQnkijZwiK7i1utCKbobkPELOtWoSYMmuv_fsfuBbAzj8Si0CMurC5PrGIwVoeDY8qNe5RMYlnnLsQxMIY3ccpM00_7JCpI4SnveGSOYhWdf5Ru2AyvEU4eLxbWo0obmrTmkOR9DpRFZuu_ysyJfEAdIBsNdc8L96cLlwJtt6hN_JIPX0BLuRo5xjkeAEjLPo_0TlH7ZlhgbGPaFuJftarjEdrVEeCUe">
+<!-- Overlay bounding boxes simulating AI vision -->
+<div class="absolute top-[30%] left-[20%] w-[60%] h-[15%] border-2 border-primary/40 bg-primary/5 rounded pointer-events-none"></div>
+<div class="absolute top-[50%] left-[20%] w-[60%] h-[15%] border-2 border-tertiary-container/60 bg-tertiary-container/10 rounded pointer-events-none pulse-border"></div>
+</div>
+</section>
+<!-- Right Panel: Extracted Data (5 columns approx) -->
+<section class="flex-[5] flex flex-col min-h-0 bg-surface rounded-xl border border-outline-variant/50 shadow-sm overflow-hidden flex-shrink-0 lg:w-[450px]">
+<div class="p-4 border-b border-outline-variant/30 bg-surface-container-lowest flex justify-between items-center sticky top-0 z-10">
+<h3 class="font-label-md text-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                        Extracted Data
+                    </h3>
+<span class="px-2.5 py-1 bg-surface-container-highest text-on-surface-variant rounded font-label-sm text-label-sm border border-outline-variant/30">Auto-detected</span>
+</div>
+<div class="flex-1 overflow-y-auto p-5 space-y-6 bg-surface">
+<!-- Form Header / Doc Type -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Document Type</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md rounded-lg pl-4 pr-10 py-2.5 appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm">
+<option>Class Schedule / Timetable</option>
+<option>Syllabus</option>
+<option>Exam Schedule</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="h-px w-full bg-outline-variant/30"></div>
+<!-- Extracted Entries -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md text-on-surface">Detected Schedule Entries</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 Items</span>
+</div>
+<!-- Entry 1: High Confidence -->
+<div class="p-4 rounded-lg border border-outline-variant/50 bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<!-- AI Indicator strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary/60"></div>
+<div class="flex justify-between items-start mb-3 pl-2"><button class="text-on-surface-variant hover:text-primary transition-colors mr-auto ml-2"><span class="material-symbols-outlined text-sm">edit</span></button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase">High Confidence</span>
+</div>
+<button class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="grid grid-cols-2 gap-3 pl-2">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Time</label>
+<input class="w-full bg-transparent border-b border-outline-variant/50 text-on-surface font-body-md py-1 focus:outline-none focus:border-primary focus:bg-inverse-on-surface/50 transition-colors" type="text" value="Mon 9:00 AM">
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Subject</label>
+<input class="w-full bg-transparent border-b border-outline-variant/50 text-on-surface font-body-md py-1 focus:outline-none focus:border-primary focus:bg-inverse-on-surface/50 transition-colors" type="text" value="Data Structures">
+</div>
+<div class="space-y-1 col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Location (Optional)</label>
+<input class="w-full bg-transparent border-b border-outline-variant/50 text-on-surface font-body-md py-1 focus:outline-none focus:border-primary focus:bg-inverse-on-surface/50 transition-colors" type="text" value="Room 304, CS Bldg">
+</div>
+</div>
+</div>
+<!-- Entry 2: Low Confidence (Amber) -->
+<div class="p-4 rounded-lg border border-tertiary-container/40 bg-[#fff8f3] shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<!-- AI Indicator strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-container"></div>
+<div class="flex justify-between items-start mb-3 pl-2"><button class="text-on-surface-variant hover:text-primary transition-colors mr-auto ml-2"><span class="material-symbols-outlined text-sm">edit</span></button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-sm">error</span>
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase">Low Confidence - Review</span>
+</div>
+<button class="text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="grid grid-cols-2 gap-3 pl-2">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Time</label>
+<input class="w-full bg-transparent border-b border-tertiary-container/50 text-on-surface font-body-md py-1 focus:outline-none focus:border-primary transition-colors" type="text" value="Mon 10:00? AM">
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Subject</label>
+<input class="w-full bg-transparent border-b border-tertiary-container/50 text-on-surface font-body-md py-1 focus:outline-none focus:border-primary transition-colors" type="text" value="Operat1ng Systems">
+</div>
+<div class="space-y-1 col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Location (Optional)</label>
+<input class="w-full bg-transparent border-b border-tertiary-container/30 text-on-surface-variant font-body-md py-1 focus:outline-none focus:border-primary transition-colors italic" placeholder="Not detected" type="text">
+</div>
+</div>
+</div>
+<button class="w-full py-2 border border-dashed border-outline-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> Add Missing Entry
+                        </button>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-4 border-t border-outline-variant/30 bg-surface-container-lowest flex gap-3 sticky bottom-0 z-10">
+<button class="flex-1 py-2.5 px-4 bg-surface-container-lowest border border-outline text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors shadow-sm">
+                        Discard
+                    </button>
+<button class="flex-[2] py-2.5 px-4 bg-[#006c4a] text-white font-label-md text-label-md rounded-lg hover:bg-[#005137] transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">sync</span>
+                        Confirm &amp; Sync to Calendar
+                    </button>
+</div>
+</section>
+</main>
+</div>
+<style>
+        @keyframes pulse-border {
+            0% { border-color: rgba(149, 79, 0, 0.4); box-shadow: 0 0 0 0 rgba(149, 79, 0, 0.2); }
+            50% { border-color: rgba(149, 79, 0, 0.8); box-shadow: 0 0 0 4px rgba(149, 79, 0, 0); }
+            100% { border-color: rgba(149, 79, 0, 0.4); box-shadow: 0 0 0 0 rgba(149, 79, 0, 0); }
+        }
+        .pulse-border {
+            animation: pulse-border 2s infinite;
+        }
+    </style>
+
+
+</body></html>

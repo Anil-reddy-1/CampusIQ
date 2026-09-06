@@ -4,13 +4,75 @@
  */
 
 const winston = require("winston");
-const path = require("path");
 
 const { combine, timestamp, errors, json, colorize, printf, splat } =
   winston.format;
 
+// Custom format to redact sensitive information from logs
+// Prevents API keys, tokens, passwords, and other secrets from being logged
+const redactSensitive = winston.format((info) => {
+  const sensitiveFields = [
+    'authorization',
+    'password',
+    'token',
+    'api_key',
+    'apiKey',
+    'apikey',
+    'secret',
+    'jwt',
+    'bearer',
+    'cookie',
+    'session',
+    'firebase_service_account',
+    'GEMINI_API_KEY',
+    'BREVO_API_KEY',
+    'DATABASE_URL',
+    'FIREBASE_SERVICE_ACCOUNT',
+    'private_key',
+  ];
+
+  // Helper function to redact sensitive data recursively
+  const redactObject = (obj) => {
+    if (!obj || typeof obj !== 'object') return obj;
+
+    const redacted = Array.isArray(obj) ? [...obj] : { ...obj };
+
+    for (const key of Object.keys(redacted)) {
+      const lowerKey = key.toLowerCase();
+
+      // Check if key matches sensitive field patterns
+      const isSensitive = sensitiveFields.some(field =>
+        lowerKey.includes(field.toLowerCase())
+      );
+
+      if (isSensitive && redacted[key]) {
+        redacted[key] = '[REDACTED]';
+      } else if (typeof redacted[key] === 'object' && redacted[key] !== null) {
+        redacted[key] = redactObject(redacted[key]);
+      }
+    }
+
+    return redacted;
+  };
+
+  // Redact sensitive data from the log info object
+  if (info.metadata) {
+    info.metadata = redactObject(info.metadata);
+  }
+
+  // Redact from additional fields that might contain sensitive data
+  const fieldsToCheck = ['headers', 'req', 'request', 'body', 'query', 'params', 'env'];
+  for (const field of fieldsToCheck) {
+    if (info[field]) {
+      info[field] = redactObject(info[field]);
+    }
+  }
+
+  return info;
+});
+
 // Custom format for development
-const devFormat = printf(({ level, message, timestamp, ...metadata }) => {
+const devFormat = printf(({ level, message, timestamp, service, ...metadata }) => {
   let msg = `${timestamp} [${level}]: ${message}`;
 
   if (Object.keys(metadata).length > 0 && metadata.stack === undefined) {
@@ -36,7 +98,13 @@ if (process.env.NODE_ENV === "production") {
   // Production: JSON format for log aggregation services
   transports.push(
     new winston.transports.Console({
-      format: combine(timestamp(), errors({ stack: true }), splat(), json()),
+      format: combine(
+        redactSensitive(),
+        timestamp(),
+        errors({ stack: true }),
+        splat(),
+        json(),
+      ),
     }),
   );
 } else {
@@ -44,6 +112,7 @@ if (process.env.NODE_ENV === "production") {
   transports.push(
     new winston.transports.Console({
       format: combine(
+        redactSensitive(),
         colorize(),
         timestamp({ format: "HH:mm:ss" }),
         errors({ stack: true }),

@@ -8,7 +8,7 @@ interface BackendProfile {
   firebase_uid: string;
   email: string;
   name: string;
-  role: "student" | "faculty" | "admin";
+  role: "student" | "admin";
   department: string | null;
   avatar_url: string | null;
   is_active: boolean;

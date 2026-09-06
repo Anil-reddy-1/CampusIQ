@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background dark:bg-inverse-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusIQ - Documents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#82f5c1",
+                      "outline-variant": "#c3c5d7",
+                      "outline": "#737686",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "surface-container-highest": "#dce2f3",
+                      "primary-container": "#1a56db",
+                      "on-background": "#151c27",
+                      "tertiary-fixed": "#ffdcc3",
+                      "surface-dim": "#d3daea",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#00174d",
+                      "surface-variant": "#dce2f3",
+                      "tertiary": "#723b00",
+                      "error-container": "#ffdad6",
+                      "background": "#f9f9ff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#f9f9ff",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#005137",
+                      "surface-container-high": "#e2e8f8",
+                      "surface-tint": "#1353d8",
+                      "on-secondary-container": "#00714e",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2a313d",
+                      "primary": "#003fb1",
+                      "secondary-fixed-dim": "#68dba9",
+                      "on-tertiary-container": "#ffd5b6",
+                      "on-surface": "#151c27",
+                      "surface-bright": "#f9f9ff",
+                      "on-primary-fixed-variant": "#003dab",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#85f8c4",
+                      "on-secondary-fixed": "#002114",
+                      "secondary": "#006c4a",
+                      "inverse-on-surface": "#ebf1ff",
+                      "surface-container": "#e7eefe",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "tertiary-container": "#954f00",
+                      "primary-fixed-dim": "#b5c4ff",
+                      "on-primary-container": "#d4dcff",
+                      "on-surface-variant": "#434654",
+                      "inverse-primary": "#b5c4ff",
+                      "surface-container-low": "#f0f3ff",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "code-md": [
+                              "JetBrains Mono"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "code-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .upload-zone {
+            transition: all 0.2s ease-in-out;
+        }
+        .upload-zone.dragover {
+            background-color: theme('colors.primary-container');
+            border-color: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col md:flex-row bg-background text-on-background font-body-md">
+<!-- Mobile Top App Bar (Visible only on md:hidden) -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 z-40 bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-sm dark:shadow-none border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">CampusIQ</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Side Navigation (Visible only on md:flex) -->
+<nav class="hidden md:flex flex-col h-screen sticky top-0 w-64 bg-surface dark:bg-on-background border-r border-outline-variant dark:border-outline z-30 flex-shrink-0">
+<!-- Header -->
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined fill" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">CampusIQ</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Copilot</p>
+</div>
+</div>
+<!-- CTA -->
+<div class="px-6 pb-6">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-label-md text-label-md py-2.5 px-4 rounded-lg hover:bg-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Upload Document
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto px-4 py-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="auto_fix">auto_fix</span>
+<span class="font-label-md text-label-md">Extraction</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary dark:text-primary-fixed font-bold bg-primary-container/10 dark:bg-primary-container/20 transition-colors" href="#">
+<span class="material-symbols-outlined fill" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="quiz">quiz</span>
+<span class="font-label-md text-label-md">Quizzes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="style">style</span>
+<span class="font-label-md text-label-md">Flashcards</span>
+</a>
+</div>
+<!-- Settings & Profile -->
+<div class="p-4 border-t border-outline-variant/30 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-3">
+<img class="w-8 h-8 rounded-full object-cover bg-surface-variant" data-alt="A small circular avatar placeholder image of a modern professional workspace with subtle, calm lighting and minimal clutter, representing an organized student user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxMeEhjrn4annkpcR_FL501WOLp5JWcHe1EiSOTSD2LMF8N0_uyjSbpaZsJdIv-9NtRSiroectmS4XUj1rec6hSfx-Qbxow4tojbaYhrFzqMkVYx02wmbzSviOiH0yj5GI80k9tQfNrM0n-u4dxKulZkocUZSn5QKS1weVdkQCTj8_oCAm1UHFtwg2-JLXOgC4JLl_rHnFP7oiu13J75421zYuhip_VkYBwr9RUr4mm9tbijIWZ__t"/>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">Student User</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">student@university.edu</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-h-0 overflow-y-auto">
+<!-- Desktop Top App Bar (Visible only on md:flex) -->
+<header class="hidden md:flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-20 bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-background">Documents &amp; Knowledge Base</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full font-body-sm text-body-sm text-on-background focus:ring-2 focus:ring-primary focus:bg-surface transition-all placeholder:text-on-surface-variant" placeholder="Search knowledge base..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full space-y-8 pb-24 md:pb-8">
+<!-- Upload Zone -->
+<section aria-labelledby="upload-heading">
+<h3 class="sr-only" id="upload-heading">Upload Documents</h3>
+<div class="upload-zone w-full rounded-xl border-2 border-dashed border-outline-variant bg-surface-container-lowest p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low transition-colors group" id="drop-zone">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h4 class="font-headline-md text-headline-md font-semibold text-on-background mb-2">Upload Notes &amp; Slides</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 max-w-md">Drag and drop your PDF, PPTX, or DOCX files here, or click to browse. Files will be automatically indexed into your knowledge base.</p>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-2 px-6 rounded-full hover:bg-primary-fixed-variant transition-colors shadow-sm">
+                        Select Files
+                    </button>
+</div>
+</section>
+<!-- Knowledge Base Table -->
+<section aria-labelledby="kb-heading">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background" id="kb-heading">My Knowledge Base</h3>
+<div class="flex gap-2 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-64 md:hidden">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/50 rounded-lg font-body-sm text-body-sm text-on-background focus:ring-2 focus:ring-primary transition-all" placeholder="Search semantic..." type="text"/>
+</div>
+<button aria-label="Filter" class="p-2 border border-outline-variant/50 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button aria-label="Sort" class="p-2 border border-outline-variant/50 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="sort">sort</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.02)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant/30">
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Filename</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Type</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider hidden sm:table-cell">Upload Date</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-error-container text-on-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">Biology_101_Chapter_4_Cell_Structure.pdf</p>
+<p class="text-on-surface-variant text-xs sm:hidden">Oct 24, 2023</p>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">PDF</td>
+<td class="py-4 px-4 text-on-surface-variant hidden sm:table-cell">Oct 24, 2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary border border-secondary/20 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                            Ready
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-tertiary-container/20 text-tertiary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="co_present">co_present</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">History_Midterm_Review_Slides.pptx</p>
+<p class="text-on-surface-variant text-xs sm:hidden">Oct 23, 2023</p>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">PPTX</td>
+<td class="py-4 px-4 text-on-surface-variant hidden sm:table-cell">Oct 23, 2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary border border-secondary/20 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                            Ready
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">Psych_Research_Paper_Draft_v2.docx</p>
+<p class="text-on-surface-variant text-xs sm:hidden">Oct 25, 2023</p>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">DOCX</td>
+<td class="py-4 px-4 text-on-surface-variant hidden sm:table-cell">Oct 25, 2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface-variant border border-outline-variant/50 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] animate-spin" data-icon="sync">sync</span>
+                                            Processing
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-error-container text-on-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-background truncate">Calculus_Formulas_Cheat_Sheet.pdf</p>
+<p class="text-on-surface-variant text-xs sm:hidden">Oct 20, 2023</p>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">PDF</td>
+<td class="py-4 px-4 text-on-surface-variant hidden sm:table-cell">Oct 20, 2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary border border-secondary/20 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                            Ready
+                                        </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Simple) -->
+<div class="p-4 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-low/30">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 4 of 12 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant/50 rounded text-on-surface-variant disabled:opacity-50 font-label-sm text-label-sm" disabled="">Previous</button>
+<button class="px-3 py-1 border border-outline-variant/50 rounded text-on-surface-variant hover:bg-surface-container-low font-label-sm text-label-sm">Next</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Visible only on md:hidden if applicable - skipped here as per rules for full destination, but maintaining semantic structure if needed. Decided to omit for a cleaner document view focusing on the content canvas, or could add simple nav). -->
+<!-- Opting to omit bottom nav for focus on file manager layout as per strict 'if top level' rule, side nav handles top level. -->
+<script>
+        // Simple drag and drop visual feedback
+        const dropZone = document.getElementById('drop-zone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('dragover');
+        }
+    </script>
+</body></html>

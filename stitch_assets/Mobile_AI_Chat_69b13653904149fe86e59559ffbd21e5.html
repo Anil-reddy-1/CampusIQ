@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusIQ - Mobile Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-tint": "#1353d8",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-high": "#e2e8f8",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-primary-fixed-variant": "#003dab",
+                        "secondary-container": "#82f5c1",
+                        "on-primary-container": "#d4dcff",
+                        "surface-variant": "#dce2f3",
+                        "tertiary": "#723b00",
+                        "on-secondary-fixed": "#002114",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface": "#f9f9ff",
+                        "on-primary-fixed": "#00174d",
+                        "surface-dim": "#d3daea",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "tertiary-container": "#954f00",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffd5b6",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#434654",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-surface": "#151c27",
+                        "surface-container": "#e7eefe",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006c4a",
+                        "on-secondary-container": "#00714e",
+                        "primary": "#003fb1",
+                        "inverse-primary": "#b5c4ff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-error-container": "#93000a",
+                        "outline": "#737686",
+                        "primary-container": "#1a56db",
+                        "surface-container-highest": "#dce2f3",
+                        "on-background": "#151c27",
+                        "outline-variant": "#c3c5d7",
+                        "secondary-fixed": "#85f8c4",
+                        "surface-bright": "#f9f9ff",
+                        "background": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "32px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "code-md": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-full flex flex-col antialiased">
+<!-- Top App Bar -->
+<header class="bg-surface/80 dark:bg-on-background/80 backdrop-blur-md flex justify-between items-center w-full px-margin-mobile h-16 sticky top-0 z-40 border-b border-outline-variant/30">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">CampusIQ</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Chat Area -->
+<main class="flex-1 overflow-y-auto flex flex-col relative w-full max-w-3xl mx-auto">
+<!-- Collapsible Sources Panel -->
+<div class="w-full bg-surface-container-low border-b border-outline-variant/50 sticky top-0 z-30 transition-all duration-300 shadow-sm" id="sources-panel">
+<button class="w-full px-margin-mobile py-3 flex items-center justify-between text-label-md font-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" onclick="toggleSources()">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="library_books">library_books</span>
+<span>2 Active Sources</span>
+</div>
+<span class="material-symbols-outlined transition-transform duration-300" data-icon="expand_more" id="sources-chevron">expand_more</span>
+</button>
+<div class="hidden px-margin-mobile pb-4 pt-1 flex-col gap-2" id="sources-content">
+<div class="flex items-center justify-between bg-surface p-2 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<span class="text-body-sm font-body-sm truncate">Advanced_Macroeconomics_Ch4.pdf</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-sm" data-icon="close">close</span></button>
+</div>
+<div class="flex items-center justify-between bg-surface p-2 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+</div>
+<span class="text-body-sm font-body-sm truncate">Lecture_Notes_Week_3.docx</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-sm" data-icon="close">close</span></button>
+</div>
+</div>
+</div>
+<!-- Chat Messages -->
+<div class="flex-1 p-margin-mobile flex flex-col gap-6 w-full">
+<!-- AI Welcome Message -->
+<div class="flex gap-4 max-w-[90%]">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant ml-1">CampusIQ</span>
+<div class="bg-surface-container-low p-3 rounded-2xl rounded-tl-sm border border-outline-variant/20 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
+<p class="text-body-md font-body-md text-on-surface">Hello! I'm analyzing the <strong>Advanced Macroeconomics</strong> chapter and your lecture notes. What would you like to focus on today?</p>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-[90%] self-end flex-row-reverse">
+<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 shadow-sm border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young university student in a modern bright study space, soft natural lighting, high quality portrait, minimalist academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3DEi6cDEXuvOErVP6PGZaE_19aiPOXK3Vd2Y0bVjMOXforsYiE_4yYeWP8n2Vvy3wRWCu9V-52Qz4k4N5_brvGmYe6AbOSjdci3oIfj77maBi3o6t7uxby0ysvq36K1WL126r4lKqRmk_07VHr5i4rKYjyD81SZ2kf6nPmkHYuNu3UpjFK-xSr3lHP-93HRCnLmLIkWyZ_YUDzzv9X_sXb9_H4MjV_6jkrpL6goQOzna3xdd38h21"/>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<span class="text-label-sm font-label-sm text-on-surface-variant mr-1">You</span>
+<div class="bg-primary p-3 rounded-2xl rounded-tr-sm shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+<p class="text-body-md font-body-md text-on-primary">Can you summarize the main arguments regarding inflation targeting from Chapter 4?</p>
+</div>
+</div>
+</div>
+<!-- AI Response with Review Card -->
+<div class="flex gap-4 max-w-[95%]">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span>
+</div>
+<div class="flex flex-col gap-2 w-full">
+<span class="text-label-sm font-label-sm text-on-surface-variant ml-1">CampusIQ</span>
+<div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 shadow-[0_2px_4px_rgba(0,0,0,0.02)] flex flex-col gap-3">
+<p class="text-body-md font-body-md text-on-surface">Based on Chapter 4, here are the key arguments regarding inflation targeting:</p>
+<div class="bg-surface rounded-xl border border-outline-variant/40 overflow-hidden mt-1 shadow-[0_4px_15px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-variant/50 border-b border-outline-variant/40">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-label-md font-label-md text-on-surface">Extraction Summary</span>
+</div>
+<div class="p-3 text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+<ul class="list-disc pl-4 space-y-1">
+<li><strong>Anchoring Expectations:</strong> It provides a clear nominal anchor, helping to stabilize public expectations of future inflation.</li>
+<li><strong>Transparency:</strong> Central banks must communicate goals clearly, increasing accountability.</li>
+<li><strong>Flexibility vs. Strictness:</strong> The debate centers on whether to rigidly hit targets or allow short-term deviations to stabilize output.</li>
+</ul>
+</div>
+<div class="px-3 py-2 bg-[#f9fafb] border-t border-outline-variant/30 flex justify-end gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container-highest rounded text-[10px] font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[12px]" data-icon="find_in_page">find_in_page</span> Page 112
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for input area -->
+<div class="h-40 w-full flex-shrink-0"></div>
+</main>
+<!-- Bottom Input Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/95 backdrop-blur-md border-t border-outline-variant/30 shadow-[0_-4px_15px_rgba(0,0,0,0.03)] z-50 px-margin-mobile py-3 flex flex-col gap-3 max-w-3xl mx-auto right-0">
+<!-- Suggestions -->
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide whitespace-nowrap">
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-outline-variant/50 bg-surface hover:bg-surface-container-low text-label-md font-label-md text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="summarize">summarize</span>
+                Summarize last class
+            </button>
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-outline-variant/50 bg-surface hover:bg-surface-container-low text-label-md font-label-md text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="quiz">quiz</span>
+                Generate 5-min quiz
+            </button>
+<button class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-outline-variant/50 bg-surface hover:bg-surface-container-low text-label-md font-label-md text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="draw">draw</span>
+                Flashcards
+            </button>
+</div>
+<!-- Input Bar -->
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-full py-2.5 pl-4 pr-10 text-body-md font-body-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-shadow placeholder:text-outline shadow-inner" placeholder="Ask about your documents..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-primary text-on-primary hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center h-8 w-8">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+</div>
+</div>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script>
+        function toggleSources() {
+            const content = document.getElementById('sources-content');
+            const chevron = document.getElementById('sources-chevron');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('flex');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                content.classList.remove('flex');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body></html>

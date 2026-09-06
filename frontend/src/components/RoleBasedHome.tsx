@@ -1,10 +1,10 @@
 import { useAuth } from "../context/AuthContext";
 import { StudentDashboard } from "../pages/student/Dashboard";
-import { FacultyDashboard } from "../pages/faculty/Dashboard";
 import { AdminDashboard } from "../pages/admin/Dashboard";
 
 /**
  * Renders the appropriate home page based on the user's role from the backend.
+ * CampusIQ supports two roles only: student and admin.
  */
 export function RoleBasedHome() {
   const { profile } = useAuth();
@@ -12,8 +12,6 @@ export function RoleBasedHome() {
   switch (profile?.role) {
     case "admin":
       return <AdminDashboard />;
-    case "faculty":
-      return <FacultyDashboard />;
     case "student":
     default:
       return <StudentDashboard />;

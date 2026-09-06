@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusIQ Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/> -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#82f5c1",
+                        "outline-variant": "#c3c5d7",
+                        "outline": "#737686",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "surface-container-highest": "#dce2f3",
+                        "primary-container": "#1a56db",
+                        "on-background": "#151c27",
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174d",
+                        "surface-variant": "#dce2f3",
+                        "tertiary": "#723b00",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-tint": "#1353d8",
+                        "on-secondary-container": "#00714e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2a313d",
+                        "primary": "#003fb1",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-container": "#ffd5b6",
+                        "on-surface": "#151c27",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-fixed-variant": "#003dab",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#85f8c4",
+                        "on-secondary-fixed": "#002114",
+                        "secondary": "#006c4a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container": "#e7eefe",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary-container": "#954f00",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "on-primary-container": "#d4dcff",
+                        "on-surface-variant": "#434654",
+                        "inverse-primary": "#b5c4ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["jetbrainsMono"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f9f9ff; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden text-on-surface bg-background">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen sticky top-0 bg-surface dark:bg-on-background border-r border-outline-variant dark:border-outline left-0 w-64 z-50">
+<div class="p-gutter flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined font-bold">school</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">CampusIQ</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Academic Copilot</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed font-bold bg-primary-container/10 dark:bg-primary-container/20" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix">auto_fix</span>
+<span class="font-label-md text-label-md">Extraction</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Planner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-label-md text-label-md">Quizzes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="font-label-md text-label-md">Flashcards</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">upload</span>
+                Upload Document
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-40 bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="md:hidden flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">CampusIQ</h1>
+</div>
+<div class="flex-1 max-w-xl mx-4 hidden md:flex items-center">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full font-body-sm text-body-sm focus:ring-2 focus:ring-primary" placeholder="Search resources, documents..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Student User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a college student in a modern, brightly lit study room. The student is smiling gently. The aesthetic is clean, light-mode, and academic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0AvFDDvyiILY8Ef0zmSoppF-NRKExCxS1M2wxIoTp8m3i2jl-Qhx89CnbDRT_30zi0Dx-KRFGIzQ4uo4QbdmeFa9MatDA0sAQLipLdU24aeJio1_Q2G-Jnm50vkpm3WDz4hF798j3MftZe1aFylOF3Jvl8ITfP3KOwQyzW9mx31CRyBBJHc1tdBh5--dB5rmLKDj-fVkLl2HgpDO-NK3wYxgWSVQBSFb7-iHLu9ewlTdDGm9XnsW"/>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop space-y-gutter">
+<!-- Calendar Banner -->
+<div class="rounded-xl bg-gradient-to-r from-primary-container to-surface-tint p-6 flex flex-col md:flex-row items-center justify-between text-on-primary shadow-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">calendar_today</span>
+</div>
+<div class="relative z-10 space-y-1 text-center md:text-left mb-4 md:mb-0">
+<h2 class="font-headline-md text-headline-md font-bold">Sync Your Academic Life</h2>
+<p class="font-body-md text-body-md text-primary-fixed-dim">Connect Google Calendar to automatically track extractions, deadlines, and study sessions.</p>
+</div>
+<button class="relative z-10 bg-on-primary text-primary px-6 py-3 rounded-full font-label-md text-label-md font-bold shadow-md hover:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined">sync</span>
+                    Connect Google Calendar
+                </button>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Upcoming Week & Deadlines -->
+<div class="lg:col-span-7 space-y-gutter">
+<div class="glass-card rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Week</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View Timetable</button>
+</div>
+<div class="space-y-4">
+<!-- Class Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-highest transition-colors">
+<div class="flex flex-col items-center justify-center w-14 h-14 rounded-lg bg-primary-container/10 text-primary">
+<span class="font-label-md text-label-md font-bold">MON</span>
+<span class="font-headline-md text-headline-md">12</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Database Management Systems</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 10:00 AM - 11:30 AM
+                                            </p>
+</div>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold tracking-wider">LECTURE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Room 402, CS Block
+                                    </p>
+</div>
+</div>
+<!-- Class Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-highest transition-colors">
+<div class="flex flex-col items-center justify-center w-14 h-14 rounded-lg bg-primary-container/10 text-primary">
+<span class="font-label-md text-label-md font-bold">MON</span>
+<span class="font-headline-md text-headline-md">12</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Operating Systems</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 1:00 PM - 3:00 PM
+                                            </p>
+</div>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold tracking-wider">LAB</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Lab 3, IT Block
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 bg-[#fffaf5] border-[#ffead6]">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary-container text-2xl" data-weight="fill">warning</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Urgent Deadline</h3>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">DBMS Assignment 2</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">SQL Queries &amp; Normalization</p>
+</div>
+<div class="flex gap-2">
+<div class="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-white border border-outline-variant shadow-sm">
+<span class="font-headline-md text-headline-md font-bold text-error">02</span>
+<span class="font-label-sm text-label-sm text-outline">DAYS</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-16 rounded-lg bg-white border border-outline-variant shadow-sm">
+<span class="font-headline-md text-headline-md font-bold text-error">14</span>
+<span class="font-label-sm text-label-sm text-outline">HOURS</span>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="px-4 py-2 bg-white border border-outline-variant text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">Start Flashcards</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Analytics & Extractions -->
+<div class="lg:col-span-5 space-y-gutter">
+<div class="glass-card rounded-xl p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Learning Analytics</h3>
+<div class="mb-6">
+<div class="flex justify-between items-end mb-2">
+<h4 class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Study Streak</h4>
+<span class="font-headline-md text-headline-md font-bold text-secondary">5 Days</span>
+</div>
+<div class="flex gap-1">
+<div class="h-2 flex-1 rounded-full bg-secondary"></div>
+<div class="h-2 flex-1 rounded-full bg-secondary"></div>
+<div class="h-2 flex-1 rounded-full bg-secondary"></div>
+<div class="h-2 flex-1 rounded-full bg-secondary"></div>
+<div class="h-2 flex-1 rounded-full bg-secondary"></div>
+<div class="h-2 flex-1 rounded-full bg-surface-variant"></div>
+<div class="h-2 flex-1 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-3">Weak Topics to Review</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm flex items-center gap-1 border border-[#ffb4ab]">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> Operating Systems
+                                </span>
+<span class="px-3 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm flex items-center gap-1 border border-[#ffb77d]">
+<span class="material-symbols-outlined text-[14px]">trending_flat</span> Data Structures
+                                </span>
+<span class="px-3 py-1.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm">
+                                    Computer Networks
+                                </span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Extractions</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Fall 2024 Timetable</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Uploaded 2h ago</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-[#dcfce7] text-[#166534] font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">check_circle</span> Confirmed
+                                </span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors bg-[#fff8f1]">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Midterm Results</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Uploaded 1d ago</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-[#fef08a] text-[#854d0e] font-label-sm text-label-sm flex items-center gap-1 border border-[#fde047]">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">error</span> Needs Review
+                                </span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[20px]">event_note</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Finals Date-sheet</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Uploaded 3d ago</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-[#dcfce7] text-[#166534] font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">check_circle</span> Confirmed
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

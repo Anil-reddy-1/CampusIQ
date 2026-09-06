@@ -4,7 +4,9 @@ const dotenv = require("dotenv");
 const pool = require("./config/db.js");
 const { connectRedis, disconnectRedis } = require("./config/redis.js");
 const { errorHandler, notFoundHandler } = require("./middleware/errorHandler.js");
+const { requestLogger } = require("./middleware/requestLogger.js");
 const { success } = require("./utils/response.js");
+const logger = require("./utils/logger.js");
 const userRoutes = require("./routes/user.routes.js");
 
 dotenv.config();
@@ -15,6 +17,9 @@ const port = process.env.PORT || 4001;
 // Middleware
 app.use(express.json());
 app.use(cors());
+
+// Request / Response logging (must be before routes)
+app.use(requestLogger);
 
 // Routes
 app.use("/api/users", userRoutes);
@@ -33,6 +38,7 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 process.on("SIGINT", async () => {
+  logger.info("SIGINT received — shutting down gracefully");
   await disconnectRedis();
   process.exit(0);
 });
@@ -41,12 +47,12 @@ const { initializeTables } = require("./models/createTables.js");
 
 // Server running
 app.listen(port, async () => {
-  console.log("Server running on port " + port);
+  logger.info(`Server running on port ${port}`);
   await connectRedis();
   try {
     await initializeTables();
   } catch (error) {
-    console.error("Failed to initialize database tables:", error);
+    logger.error("Failed to initialize database tables:", error);
   }
 });
 
