@@ -3,6 +3,13 @@ dotenv.config();
 
 const env = process.env.NODE_ENV || "development";
 
+function sanitizeRedisUri(uri) {
+  if (!uri) return undefined;
+  let cleaned = uri.trim().replace(/^["']|["']$/g, "");
+  const match = cleaned.match(/(rediss?:\/\/[^\s"']+)/i);
+  return match ? match[1] : cleaned;
+}
+
 const config = {
   env,
   PORT: process.env.PORT || 4000,
@@ -17,7 +24,7 @@ const config = {
     DB_PASS: process.env.DB_PASS,
   },
   redis: {
-    REDIS_URI: process.env.REDIS_URI,
+    REDIS_URI: sanitizeRedisUri(process.env.REDIS_URI),
   },
   firebase: {
     projectId: process.env.FIREBASE_PROJECT_ID,

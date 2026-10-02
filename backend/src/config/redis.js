@@ -2,20 +2,25 @@ const  {createClient} =require('redis');
 const   config = require('./env.js');
 
 
- const redisClient = createClient({
-    url:config.redis.REDIS_URI
-}) 
-redisClient.on('connect',()=>{
-    console.log("connected to redis ");
-})
+const redisClient = createClient({
+    url: config.redis.REDIS_URI
+});
 
-redisClient.on('ready',()=>{
-    console.log("redis client ready ");
-})
+redisClient.on('error', (err) => {
+    console.error('Redis client error:', err.message);
+});
 
-redisClient.on('disconnected',()=>{
+redisClient.on('connect', () => {
+    console.log("connected to redis");
+});
+
+redisClient.on('ready', () => {
+    console.log("redis client ready");
+});
+
+redisClient.on('disconnected', () => {
     console.log("redis disconnected");
-})
+});
 
  const connectRedis=async ()=>{
     if(!redisClient.isOpen){
