@@ -1,62 +1,142 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../firebase";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from '../firebase';
+import { AuthLayout } from '../components/layout';
+import { Button, Input, Card } from '../components/ui';
+import { Mail, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
 
 export function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleReset = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setMessage("");
+    setError('');
     setLoading(true);
+
     try {
       await sendPasswordResetEmail(auth, email);
-      setMessage("Password reset email sent! Check your inbox.");
+      setSuccess(true);
     } catch (err: any) {
-      setError(err.code === "auth/user-not-found"
-        ? "No account found with this email."
-        : "Failed to send reset email. Please try again.");
+      console.error('Password reset error:', err);
+      setError(mapFirebaseError(err.code));
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <div className="auth-page">
-      <div className="auth-card card">
-        <h1>Reset password</h1>
-        <p className="subtitle">Enter your email and we'll send you a reset link</p>
-
-        {error && <div className="alert alert-error">{error}</div>}
-        {message && <div className="alert alert-success">{message}</div>}
-
-        <form onSubmit={handleReset} className="auth-form">
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">Email</label>
-            <input
-              id="email"
-              className="form-input"
-              type="email"
-              placeholder="you@university.edu"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+  if (success) {
+    return (
+      <AuthLayout>
+        <Card className="w-full max-w-md text-center">
+          <div className="mb-6">
+            <div className="w-16 h-16 mx-auto mb-4 bg-secondary-container/20 rounded-full flex items-center justify-center">
+              <CheckCircle size={32} className="text-secondary" />
+            </div>
+            <h1 className="text-headline-lg text-on-surface font-bold mb-2">
+              Check Your Email
+            </h1>
+            <p className="text-body-md text-on-surface-variant">
+              We've sent password reset instructions to{' '}
+              <strong className="text-on-surface">{email}</strong>
+            </p>
           </div>
-          <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-            {loading ? "Sending..." : "Send reset link"}
-          </button>
+
+          <div className="p-4 bg-surface-container-low rounded-lg text-left mb-6">
+            <p className="text-body-sm text-on-surface-variant mb-2">
+              Click the link in the email to reset your password.
+            </p>
+            <p className="text-body-sm text-on-surface-variant">
+              If you don't see the email, check your spam folder.
+            </p>
+          </div>
+
+          <Link to="/login">
+            <Button fullWidth>
+              <ArrowLeft size={18} />
+              Back to Login
+            </Button>
+          </Link>
+
+          <div className="mt-4">
+            <button
+              onClick={() => setSuccess(false)}
+              className="text-body-sm text-primary hover:underline"
+            >
+              Try a different email
+            </button>
+          </div>
+        </Card>
+      </AuthLayout>
+    );
+  }
+
+  return (
+    <AuthLayout>
+      <Card className="w-full max-w-md">
+        <div className="mb-6">
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-1 text-body-sm text-primary hover:underline mb-4"
+          >
+            <ArrowLeft size={16} />
+            Back to Login
+          </Link>
+          <h1 className="text-headline-lg text-on-surface font-bold mb-2">
+            Reset Password
+          </h1>
+          <p className="text-body-md text-on-surface-variant">
+            Enter your email and we'll send you instructions to reset your password
+          </p>
+        </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-error-container text-on-error-container rounded-lg flex items-start gap-2">
+            <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <Input
+            type="email"
+            label="Email"
+            placeholder="student@university.edu"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            icon={<Mail size={18} />}
+            helperText="We'll send password reset instructions to this email"
+            required
+          />
+
+          <Button type="submit" fullWidth loading={loading} disabled={loading}>
+            Send Reset Instructions
+          </Button>
         </form>
 
         <div className="auth-footer">
-          <Link to="/login">← Back to sign in</Link>
+          Remember your password?{' '}
+          <Link to="/login" className="text-primary font-medium hover:underline">
+            Sign in
+          </Link>
         </div>
-      </div>
-    </div>
+      </Card>
+    </AuthLayout>
   );
+}
+
+function mapFirebaseError(code: string): string {
+  switch (code) {
+    case 'auth/invalid-email':
+      return 'Invalid email address.';
+    case 'auth/user-not-found':
+      return 'No account found with this email.';
+    case 'auth/too-many-requests':
+      return 'Too many requests. Please try again later.';
+    default:
+      return 'An error occurred. Please try again.';
+  }
 }

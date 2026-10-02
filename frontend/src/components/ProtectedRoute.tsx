@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Spinner } from "./ui/Spinner";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -11,9 +12,11 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <div className="spinner" />
-        Loading...
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background gap-3">
+        <Spinner size="lg" />
+        <p className="text-body-md font-medium text-on-surface-variant animate-pulse">
+          Loading...
+        </p>
       </div>
     );
   }
@@ -39,9 +42,11 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
   // Authenticated via Firebase but no backend profile yet (still syncing)
   if (!profile) {
     return (
-      <div className="loading-screen">
-        <div className="spinner" />
-        Setting up your account...
+      <div className="flex flex-col items-center justify-center min-h-screen bg-background gap-3">
+        <Spinner size="lg" />
+        <p className="text-body-md font-medium text-on-surface-variant animate-pulse">
+          Setting up your account...
+        </p>
       </div>
     );
   }

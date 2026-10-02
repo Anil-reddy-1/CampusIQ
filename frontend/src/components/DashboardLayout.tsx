@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./DashboardLayout.css";
 
@@ -6,32 +7,33 @@ interface NavItem {
   icon: string;
   label: string;
   id: string;
+  path: string;
 }
 
 const studentNavItems: NavItem[] = [
-  { icon: "dashboard", label: "Dashboard", id: "dashboard" },
-  { icon: "auto_fix", label: "Extraction", id: "extraction" },
-  { icon: "forum", label: "Chat", id: "chat" },
-  { icon: "description", label: "Documents", id: "documents" },
-  { icon: "calendar_month", label: "Planner", id: "planner" },
-  { icon: "quiz", label: "Quizzes", id: "quizzes" },
-  { icon: "style", label: "Flashcards", id: "flashcards" },
-  { icon: "settings", label: "Settings", id: "settings" },
+  { icon: "dashboard", label: "Dashboard", id: "dashboard", path: "/" },
+  { icon: "auto_fix", label: "Extraction", id: "extraction", path: "/extraction" },
+  { icon: "forum", label: "Chat", id: "chat", path: "/chat" },
+  { icon: "description", label: "Documents", id: "documents", path: "/documents" },
+  { icon: "calendar_month", label: "Planner", id: "planner", path: "/planner" },
+  { icon: "quiz", label: "Quizzes", id: "quizzes", path: "/quizzes" },
+  { icon: "style", label: "Flashcards", id: "flashcards", path: "/flashcards" },
+  { icon: "settings", label: "Settings", id: "settings", path: "/settings" },
 ];
 
 const adminNavItems: NavItem[] = [
-  { icon: "dashboard", label: "Dashboard", id: "dashboard" },
-  { icon: "group", label: "Users", id: "users" },
-  { icon: "auto_fix", label: "Extraction", id: "extraction" },
-  { icon: "monitor_heart", label: "System Health", id: "system-health" },
-  { icon: "settings", label: "Settings", id: "settings" },
+  { icon: "dashboard", label: "Dashboard", id: "dashboard", path: "/admin" },
+  { icon: "group", label: "Users", id: "users", path: "/admin/users" },
+  { icon: "auto_fix", label: "Extraction", id: "extraction", path: "/admin/extractions" },
+  { icon: "monitor_heart", label: "System Health", id: "system-health", path: "/admin/health" },
+  { icon: "settings", label: "Settings", id: "settings", path: "/settings" },
 ];
 
 const mobileNavItems: NavItem[] = [
-  { icon: "dashboard", label: "Dashboard", id: "dashboard" },
-  { icon: "auto_fix", label: "Extraction", id: "extraction" },
-  { icon: "forum", label: "Chat", id: "chat" },
-  { icon: "calendar_month", label: "Planner", id: "planner" },
+  { icon: "dashboard", label: "Dashboard", id: "dashboard", path: "/" },
+  { icon: "auto_fix", label: "Extraction", id: "extraction", path: "/extraction" },
+  { icon: "forum", label: "Chat", id: "chat", path: "/chat" },
+  { icon: "calendar_month", label: "Planner", id: "planner", path: "/planner" },
 ];
 
 interface DashboardLayoutProps {
@@ -40,6 +42,7 @@ interface DashboardLayoutProps {
 }
 
 export function DashboardLayout({ children, activeNav = "dashboard" }: DashboardLayoutProps) {
+  const navigate = useNavigate();
   const { profile, logout } = useAuth();
   const isAdmin = profile?.role === "admin";
   const navItems = isAdmin ? adminNavItems : studentNavItems;
@@ -64,6 +67,7 @@ export function DashboardLayout({ children, activeNav = "dashboard" }: Dashboard
               key={item.id}
               className={`sidebar-nav-item${activeNav === item.id ? " active" : ""}`}
               type="button"
+              onClick={() => navigate(item.path)}
             >
               <span className="material-symbols-outlined">{item.icon}</span>
               <span>{item.label}</span>

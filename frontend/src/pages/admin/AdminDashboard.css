@@ -7,11 +7,11 @@
 }
 
 .admin-dashboard-title {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 32px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--on-surface);
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
   margin: 0;
 }
 
@@ -35,13 +35,13 @@
 }
 
 .admin-stat-card {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-2xl);
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  box-shadow: var(--shadow-sm);
 }
 
 .admin-stat-header {
@@ -51,11 +51,9 @@
 }
 
 .admin-stat-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--outline);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
 }
 
 .admin-stat-trend {
@@ -71,24 +69,24 @@
 }
 
 .admin-stat-trend.positive {
-  color: var(--secondary);
+  color: var(--color-secondary);
 }
 
 .admin-stat-trend.neutral {
-  color: var(--outline);
+  color: var(--color-on-surface-variant);
 }
 
 .admin-stat-value {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 32px;
   font-weight: 700;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   margin: 0;
 }
 
 .admin-stat-subtitle {
   font-size: 12px;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }
 
 /* --- Two Column Grid --- */
@@ -106,42 +104,42 @@
 
 /* --- Chart Section --- */
 .admin-chart-card {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-2xl);
   padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .admin-chart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .admin-chart-header h3 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   margin: 0;
 }
 
 .admin-chart-filter {
   padding: 6px 12px;
-  border: 1px solid var(--outline-variant);
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: var(--font);
-  color: var(--on-surface);
-  background: var(--surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-on-surface);
+  background: var(--color-surface-container-low);
   cursor: pointer;
 }
 
 .admin-chart-placeholder {
   height: 200px;
-  background: var(--surface-container-low);
-  border-radius: 8px;
+  background: var(--color-surface-container-low);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -174,11 +172,11 @@
 }
 
 .chart-bar.primary {
-  background: var(--primary-container);
+  background: var(--color-primary-container);
 }
 
 .chart-bar.secondary {
-  background: var(--primary-fixed-dim);
+  background: var(--color-primary-light);
 }
 
 .chart-legend {
@@ -193,36 +191,36 @@
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: var(--on-surface-variant);
+  color: var(--color-on-surface-variant);
 }
 
 .chart-legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 
 .chart-legend-dot.primary {
-  background: var(--primary-container);
+  background: var(--color-primary-container);
 }
 
 .chart-legend-dot.secondary {
-  background: var(--primary-fixed-dim);
+  background: var(--color-primary-light);
 }
 
 /* --- System Health Card --- */
 .system-health-card {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-2xl);
   padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .system-health-card h3 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   margin: 0 0 20px;
 }
 
@@ -231,7 +229,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid var(--surface-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .health-metric:last-child {
@@ -239,28 +237,26 @@
 }
 
 .health-metric-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--outline);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
 }
 
 .health-metric-value {
   font-size: 14px;
   font-weight: 600;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 }
 
 .health-metric-value.normal {
-  color: var(--secondary);
+  color: var(--color-secondary);
 }
 
 .health-progress-bar {
   flex: 1;
   max-width: 120px;
-  height: 8px;
-  background: var(--surface-variant);
+  height: 6px;
+  background: var(--color-surface-container);
   border-radius: 9999px;
   overflow: hidden;
   margin: 0 12px;
@@ -269,7 +265,7 @@
 .health-progress-fill {
   height: 100%;
   border-radius: 9999px;
-  background: var(--secondary);
+  background: var(--color-secondary);
 }
 
 .health-metric-row {
@@ -283,11 +279,11 @@
 }
 
 .server-latency-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--outline);
+  color: var(--color-on-surface-variant);
   margin-bottom: 8px;
 }
 
@@ -299,22 +295,22 @@
 }
 
 .latency-name {
-  font-size: 14px;
-  color: var(--on-surface-variant);
+  font-size: 13px;
+  color: var(--color-on-surface-variant);
 }
 
 .latency-value {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
 }
 
 /* --- User Management Table --- */
 .admin-users-card {
-  background: var(--surface-container-lowest);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-2xl);
   padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
 
 .admin-users-header {
@@ -327,29 +323,29 @@
 }
 
 .admin-users-header h3 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
-  color: var(--on-surface);
+  color: var(--color-on-surface);
   margin: 0;
 }
 
 .admin-search-input {
   padding: 8px 16px 8px 40px;
-  border: 1px solid var(--outline-variant);
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: var(--font);
-  color: var(--on-surface);
-  background: var(--surface-container-lowest);
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--color-on-surface);
+  background: var(--color-surface-container-low);
   outline: none;
   width: 240px;
   max-width: 100%;
-  transition: border-color 150ms ease;
+  transition: box-shadow 150ms ease;
 }
 
 .admin-search-input:focus {
-  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
 }
 
 .admin-search-wrapper {
@@ -361,8 +357,9 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 18px;
-  color: var(--outline);
+  font-size: 16px;
+  color: var(--color-on-surface-variant);
+  opacity: 0.4;
 }
 
 .admin-users-table {
@@ -372,21 +369,21 @@
 }
 
 .admin-users-table thead th {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--outline);
+  color: var(--color-on-surface-variant);
   text-align: left;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .admin-users-table tbody td {
-  padding: 16px;
+  padding: 14px 16px;
   font-size: 14px;
-  color: var(--on-surface);
-  border-bottom: 1px solid var(--surface-variant);
+  color: var(--color-on-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
   vertical-align: middle;
 }
 
@@ -395,41 +392,41 @@
 }
 
 .user-status {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 9999px;
   display: inline-block;
 }
 
 .user-status.active {
-  background: #dcfce7;
+  background: var(--color-secondary-light);
   color: #166534;
 }
 
 .user-status.suspended {
-  background: var(--error-container);
-  color: var(--on-error-container);
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
 }
 
 .user-action-link {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   margin-right: 12px;
-  font-family: var(--font);
+  font-family: inherit;
 }
 
 .user-action-link:hover {
-  text-decoration: underline;
+  opacity: 0.7;
 }
 
 .user-action-link.danger {
-  color: var(--error);
+  color: var(--color-error);
 }
 
 /* Mobile table responsiveness */

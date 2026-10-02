@@ -1,126 +1,214 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../firebase";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { auth } from '../firebase';
+import { AuthLayout } from '../components/layout';
+import { Button, Input, Card } from '../components/ui';
+import { Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
 
 export function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleEmailSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
+  const validateForm = () => {
+    if (fullName.length < 2) {
+      setError('Please enter your full name');
+      return false;
     }
-
     if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
+      setError('Password must be at least 6 characters');
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return false;
+    }
+    if (!acceptTerms) {
+      setError('Please accept the terms and conditions');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!validateForm()) {
       return;
     }
 
     setLoading(true);
+
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      // Create user in Firebase
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Send verification email
+      await sendEmailVerification(userCredential.user);
+
+      // Show success message
+      setSuccess(true);
+
+      // Redirect after 3 seconds
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     } catch (err: any) {
+      console.error('Signup error:', err);
       setError(mapFirebaseError(err.code));
     } finally {
       setLoading(false);
     }
   };
 
-  const handleGoogleSignup = async () => {
-    setError("");
-    setLoading(true);
-    try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/");
-    } catch (err: any) {
-      setError(mapFirebaseError(err.code));
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (success) {
+    return (
+      <AuthLayout>
+        <Card className="w-full max-w-md text-center shadow-xl">
+          <div className="mb-8">
+            <div className="w-16 h-16 mx-auto mb-4 bg-success-light rounded-2xl flex items-center justify-center">
+              <CheckCircle size={36} className="text-secondary" />
+            </div>
+            <h1 className="text-headline-lg text-on-surface font-bold mb-2">
+              Account Created!
+            </h1>
+            <p className="text-body-md text-on-surface-variant">
+              We've sent a verification email to <strong className="text-on-surface">{email}</strong>
+            </p>
+          </div>
+
+          <div className="p-5 bg-surface-container rounded-xl text-left mb-6 border border-outline-variant/40">
+            <p className="text-body-sm text-on-surface-variant mb-3">
+              Please check your email and click the verification link to activate your account.
+            </p>
+            <p className="text-body-sm text-on-surface-variant">
+              Redirecting you to login page...
+            </p>
+          </div>
+
+          <Button fullWidth onClick={() => navigate('/login')} size="lg">
+            Go to Login
+          </Button>
+        </Card>
+      </AuthLayout>
+    );
+  }
 
   return (
-    <div className="auth-page">
-      <div className="auth-card card">
-        <h1>Create account</h1>
-        <p className="subtitle">Get started with CampusIQ</p>
+    <AuthLayout>
+      <Card className="w-full max-w-md shadow-xl">
+        <div className="mb-8">
+          <h1 className="text-headline-lg text-on-surface font-bold mb-2">
+            Create Account
+          </h1>
+          <p className="text-body-md text-on-surface-variant">
+            Join CampusIQ and start your academic journey
+          </p>
+        </div>
 
-        {error && <div className="alert alert-error">{error}</div>}
+        {error && (
+          <div className="mb-6 p-4 bg-error-container text-error rounded-xl flex items-start gap-3 border border-error/20">
+            <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+            <p className="text-body-sm font-medium">{error}</p>
+          </div>
+        )}
 
-        <form onSubmit={handleEmailSignup} className="auth-form">
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">Email</label>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <Input
+            type="text"
+            label="Full Name"
+            placeholder="John Doe"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            icon={<User size={18} />}
+            required
+          />
+
+          <Input
+            type="email"
+            label="Email"
+            placeholder="student@university.edu"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            icon={<Mail size={18} />}
+            required
+          />
+
+          <Input
+            type="password"
+            label="Password"
+            placeholder="At least 6 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            icon={<Lock size={18} />}
+            helperText="Must be at least 6 characters long"
+            required
+          />
+
+          <Input
+            type="password"
+            label="Confirm Password"
+            placeholder="Re-enter your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            icon={<Lock size={18} />}
+            required
+          />
+
+          <label className="flex items-start gap-2.5 cursor-pointer group">
             <input
-              id="email"
-              className="form-input"
-              type="email"
-              placeholder="you@university.edu"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              type="checkbox"
+              checked={acceptTerms}
+              onChange={(e) => setAcceptTerms(e.target.checked)}
+              className="w-4 h-4 mt-0.5 rounded-md border-outline-variant/60 text-primary focus:ring-primary/20 focus:ring-offset-0 smooth-transition"
             />
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor="password">Password</label>
-            <input
-              id="password"
-              className="form-input"
-              type="password"
-              placeholder="At least 6 characters"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor="confirm-password">Confirm Password</label>
-            <input
-              id="confirm-password"
-              className="form-input"
-              type="password"
-              placeholder="Repeat your password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-            {loading ? "Creating account..." : "Create account"}
-          </button>
+            <span className="text-body-sm text-on-surface-variant">
+              I agree to the{' '}
+              <Link to="/terms" className="text-primary hover:text-primary-hover font-medium smooth-transition">
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link to="/privacy" className="text-primary hover:text-primary-hover font-medium smooth-transition">
+                Privacy Policy
+              </Link>
+            </span>
+          </label>
+
+          <Button type="submit" fullWidth loading={loading} disabled={loading} size="lg">
+            Create Account
+          </Button>
         </form>
 
-        <div className="auth-divider">or</div>
-
-        <button className="btn btn-google btn-block" onClick={handleGoogleSignup} disabled={loading}>
-          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" /><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" /><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" /><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" /></svg>
-          Continue with Google
-        </button>
-
         <div className="auth-footer">
-          Already have an account? <Link to="/login">Sign in</Link>
+          Already have an account?{' '}
+          <Link to="/login" className="text-primary font-semibold hover:text-primary-hover smooth-transition">
+            Sign in
+          </Link>
         </div>
-      </div>
-    </div>
+      </Card>
+    </AuthLayout>
   );
 }
 
 function mapFirebaseError(code: string): string {
   switch (code) {
-    case "auth/email-already-in-use": return "An account with this email already exists.";
-    case "auth/invalid-email": return "Invalid email address.";
-    case "auth/weak-password": return "Password is too weak. Use at least 6 characters.";
-    case "auth/popup-closed-by-user": return "Google sign-in was cancelled.";
-    case "auth/unauthorized-domain": return "This domain is not authorized. Add localhost to Firebase Authorized Domains.";
-    default: return "An error occurred. Please try again.";
+    case 'auth/email-already-in-use':
+      return 'An account with this email already exists.';
+    case 'auth/invalid-email':
+      return 'Invalid email address.';
+    case 'auth/operation-not-allowed':
+      return 'Email/password accounts are not enabled.';
+    case 'auth/weak-password':
+      return 'Password is too weak. Please use a stronger password.';
+    default:
+      return 'An error occurred during signup. Please try again.';
   }
 }

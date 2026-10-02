@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { StudentDashboard } from "../pages/student/Dashboard";
+import { Dashboard } from "../pages/student/Dashboard";
 import { AdminDashboard } from "../pages/admin/Dashboard";
 
 /**
@@ -14,6 +14,6 @@ export function RoleBasedHome() {
       return <AdminDashboard />;
     case "student":
     default:
-      return <StudentDashboard />;
+      return <Dashboard />;
   }
 }
