@@ -6,8 +6,12 @@
   "author": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "build": "echo \"No build required\"",
     "seed:admin": "node scripts/seed-admin.js",
+    "docker:build": "docker build -t campusiq-backend .",
+    "docker:run": "docker run -p 5000:5000 --env-file .env campusiq-backend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
